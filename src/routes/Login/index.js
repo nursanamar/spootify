@@ -21,7 +21,7 @@ export default function Index() {
   return (
     <div className="container">
       <h2>Please Login First</h2>
-      <button onClick={login} >Login</button>
+      <button className="button-login" onClick={login} >Login</button>
     </div>
   )
 }

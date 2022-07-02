@@ -4,4 +4,13 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+
+    .button-login {
+        background-color: #1ed760;
+        border: 0;
+        color: #fff;
+        padding: 5px 15px;
+        font-size: 20px;
+        cursor: pointer;
+    }
 }
