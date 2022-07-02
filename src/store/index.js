@@ -17,7 +17,7 @@ import { Api } from "../services/api";
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: [authReducer.reducerPath],
+  blacklist: [Api.reducerPath],
 }
 
 const persistedReducer = persistReducer(persistConfig, combineReducers({

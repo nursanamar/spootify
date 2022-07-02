@@ -1,27 +1,19 @@
 import React, { Component } from 'react';
 import DiscoverBlock from './DiscoverBlock/components/DiscoverBlock';
 import '../styles/_discover.scss';
+import { Api } from "../../../services/api";
 
-export default class Discover extends Component {
-  constructor() {
-    super();
+export default function Discover() {
 
-    this.state = {
-      newReleases: [],
-      playlists: [],
-      categories: []
-    };
-  }
+  const {data: newReleases } = Api.useGetNewReleasesQuery()
+  const {data: featuredPlaylists} = Api.useGetFeaturedPlaylistsQuery()
+  const {data: categories} = Api.useGetCategoriesQuery()
 
-  render() {
-    const { newReleases, playlists, categories } = this.state;
-
-    return (
-      <div className="discover">
-        <DiscoverBlock text="RELEASED THIS WEEK" id="released" data={newReleases} />
-        <DiscoverBlock text="FEATURED PLAYLISTS" id="featured" data={playlists} />
-        <DiscoverBlock text="BROWSE" id="browse" data={categories} imagesKey="icons" />
-      </div>
-    );
-  }
+  return (
+    <div className="discover">
+      <DiscoverBlock text="RELEASED THIS WEEK" id="released" data={newReleases?.albums.items ?? []} />
+      <DiscoverBlock text="FEATURED PLAYLISTS" id="featured" data={featuredPlaylists?.playlists.items ?? []} />
+      <DiscoverBlock text="BROWSE" id="browse" data={categories?.categories.items ?? []} imagesKey="icons" />
+    </div>
+  );
 }
